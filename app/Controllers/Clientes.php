@@ -33,16 +33,22 @@ class Clientes extends Controller{
     }
     public function store(){
         $dados =$this->request->getVar();
+        $session = session();
         if(isset($dados['id_cliente'])):
             $this->cliente_model
                                 ->where('id_cliente', $dados['id_cliente'])
                                 ->set($dados)
                                 ->update();
+                                $session->setFlashdata('alert', 'success_update');
+
             return redirect()->to("/clientes/editar/{$dados['id_cliente']}");
         endif;
 
 
         $this->cliente_model->insert($dados);
+
+        $session->setFlashdata('alert', 'success_create');
+
         return redirect()->to('/clientes/index');
         //$this->//dd($dados);
     }
@@ -52,6 +58,9 @@ class Clientes extends Controller{
         $this->cliente_model
                 ->where('id_cliente', $id_cliente)
                 ->delete();
+
+                $session = session();
+                $session->setFlashdata('alert', 'success_delete');
         return redirect()->to('/clientes/index');
     }
     public function ver($id_cliente){
