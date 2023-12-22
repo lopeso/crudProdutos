@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <?php 
+        <?php
           $session = session();
           $alert = $session->get("alert");
         ?>
@@ -72,7 +72,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($clientes as $cliente): ?>
+                    <?php if(!empty($clientes)):?>
+                      <?php foreach($clientes as $cliente): ?>
                       <tr>
                         <td><?= $cliente['id_cliente'] ?></td>
                         <td><?= $cliente['nome'] ?></td>
@@ -81,13 +82,17 @@
                         <td><?= $cliente['endereco'] ?></td>
                         <td><?= $cliente['limite_de_credito'] ?></td>
                         <td>
-                            <a href="/clientes/ver/<?= $cliente['id_cliente']?>"><i class="far fa-eye"></i></a>
-                            <a href="/clientes/editar/<?= $cliente['id_cliente']?>"><i class="far fa-edit"></i></a>
-                            <button type="button" onClick="document.getElementById('id_cliente').value = <?=$cliente['id_cliente'] ?>" data-toggle="modal" data-target="#modal-confirmacao-excluir"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-info" href="/clientes/ver/<?= $cliente['id_cliente']?>"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-warning" href="/clientes/editar/<?= $cliente['id_cliente']?>"><i class="text-white fas fa-edit"></i></button>
+                            <button class="btn btn-danger"type="button" onClick="document.getElementById('id_cliente').value = <?=$cliente['id_cliente'] ?>" data-toggle="modal" data-target="#modal-confirmacao-excluir"><i class="fa fa-trash"></i></button>
                         </td>
 
                       </tr>
                     <?php endforeach; ?>
+                    <?php else: ?>
+                      <td colspan="7">nenhum cliente cadastrado!</td>
+
+                    <?php endif;?>
                   </tbody>
                   </table>
 

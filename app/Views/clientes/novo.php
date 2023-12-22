@@ -58,7 +58,7 @@
             </div>
 </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary">cadastrar</button>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cadastrar</button>
     </div>
     </form>
     </div>

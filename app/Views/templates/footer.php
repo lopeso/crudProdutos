@@ -12,10 +12,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+    <a href="http://lopeso.click">lopeso.click</a>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2023 <a href="http://lopeso.click">lopeso.click</a>.</strong> All rights reserved.
+    <strong>Sistema do carai  2023-<?= date("Y")?> .</strong> Free Software.
   </footer>
 </div>
 <!-- ./wrapper -->
