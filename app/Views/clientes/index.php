@@ -53,13 +53,39 @@
                         <td>
                             <a href="/clientes/ver/<?= $cliente['id_cliente']?>"><i class="far fa-eye"></i></a>
                             <a href="/clientes/editar/<?= $cliente['id_cliente']?>"><i class="far fa-edit"></i></a>
-                            <a href="/clientes/excluir/<?= $cliente['id_cliente']?>"><i class="fa fa-trash"></i></a>
+                            <button type="button" onClick="document.getElementById('id_cliente').value = <?=$cliente['id_cliente'] ?>" data-toggle="modal" data-target="#modal-confirmacao-excluir"><i class="fa fa-trash"></i></button>
                         </td>
 
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
                   </table>
+
+
+                  <div class="modal fade" id="modal-confirmacao-excluir">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                          <form action="/clientes/excluir" method="post">
+                              <div class="modal-header">
+                              <h4 class="modal-title">Deseja excluir este cliente?</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                              <input type="hidden" id="id_cliente" name="id_cliente"></input>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">NÃO</button>
+                              <button type="submit" class="btn btn-primary">SIM</button>
+                            </div>
+                          </form>
+                        </div>
+
+                        </div>
+
+                    </div>
+
             </div>
 
 <div class="card-footer clearfix">

@@ -35,31 +35,31 @@
         <div class="row">
             <div class="form-group col-lg-5">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" value="<?= $cliente['nome']?>">
+                <input disabled type="text" class="form-control" name="nome" value="<?= $cliente['nome']?>">
             </div>
             <div class="col-lg-3">
                     <label for="name">Data de Nascimento</label>
-                    <input type="date" class="form-control" name="data_de_nascimento" value ="<?= $cliente['data_de_nascimento']?>">
+                    <input disabed type="date" class="form-control" name="data_de_nascimento" value ="<?= $cliente['data_de_nascimento']?>">
             </div>
             <div class="col-lg-4">
                     <label for="telefone">Telefone</label>
-                    <input type="phone" class="form-control" name="telefone" value ="<?= $cliente['telefone']?>">
+                    <input disabled type="phone" class="form-control" name="telefone" value ="<?= $cliente['telefone']?>">
             </div>
             </div>
             <div class="row">
                 <div class="col-lg-8">
                     <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" name="endereco" value ="<?= $cliente['endereco']?>">
+                    <input disabled type="text" class="form-control" name="endereco" value ="<?= $cliente['endereco']?>">
                 </div>
                 <div class="col-lg-4">
                     <label for="limite_de_credito">Limite de crédito</label>
-                    <input type="text" class="form-control" name="limite_de_credito" value ="<?= $cliente['limite_de_credito']?>">
+                    <input disabled type="text" class="form-control" name="limite_de_credito" value ="<?= $cliente['limite_de_credito']?>">
                 </div>
-                <input type="hidden" name="id_cliente" value="<?= $cliente['id_cliente'] ?>"></input>
+                <input disabled type="hidden" name="id_cliente" value="<?= $cliente['id_cliente'] ?>"></input>
             </div>
 </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <!-- <button type="submit" class="btn btn-primary">Atualizar</button> -->
     </div>
     </form>
     </div>

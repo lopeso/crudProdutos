@@ -47,7 +47,8 @@ class Clientes extends Controller{
         //$this->//dd($dados);
     }
 
-    public function excluir($id_cliente){
+    public function excluir(){
+        $id_cliente = $this->request->getVar('id_cliente');
         $this->cliente_model
                 ->where('id_cliente', $id_cliente)
                 ->delete();
