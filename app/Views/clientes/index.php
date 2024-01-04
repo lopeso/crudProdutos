@@ -1,45 +1,41 @@
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+<div class="modal fade" id="modal-confimacao-delte">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/clientes/excluir" method="post">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirme sua ação</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente excluir esse Cliente?</p>
+          <input type="hidden" id="id_cliente" name="id_cliente" value="">
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Sim</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <?php
-          $session = session();
-          $alert = $session->get("alert");
-        ?>
-        <?php if(isset($alert)):?>
-            <?php if ($alert == 'success_create'):?>
-              <div class="row">
-                <div class="col-lg-12">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Sucesso!</strong> Cliente cadastrado.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            <?php elseif($alert == 'success_delete'):?>
-              <div class="row">
-                <div class="col-lg-12">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Cliente excluído!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <?php endif;?>
-        <?php endif;?>
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Clientes</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Início</a></li>
               <li class="breadcrumb-item active">Clientes</li>
             </ol>
           </div><!-- /.col -->
@@ -51,91 +47,88 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-          <div class="row">
-              <div class="div col-lg-12">
-              <div class="card">
-              <div class="card-header">
-                  <a href="/clientes/novo" class="btn btn-info">Novo Cliente</a>
-                  </div>
+        
+        <?php
+          $session = session();
+          $alert = $session->get('alert');
+        ?>
 
-                  <div class="card-body">
-                  <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">cód.:</th>
-                      <th>Nome</th>
-                      <th>Data Nascimento</th>
-                      <th >Telefone</th>
-                      <th>  Endereço</th>
-                      <th> limite de crédito</th>
-                      <th> Ações </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php if(!empty($clientes)):?>
-                      <?php foreach($clientes as $cliente): ?>
-                      <tr>
-                        <td><?= $cliente['id_cliente'] ?></td>
-                        <td><?= $cliente['nome'] ?></td>
-                        <td><?= $cliente['data_de_nascimento'] ?></td>
-                        <td><?= $cliente['telefone'] ?></td>
-                        <td><?= $cliente['endereco'] ?></td>
-                        <td><?= $cliente['limite_de_credito'] ?></td>
-                        <td>
-                            <button class="btn btn-info" href="/clientes/ver/<?= $cliente['id_cliente']?>"><i class="fas fa-eye"></i></button>
-                            <button class="btn btn-warning" href="/clientes/editar/<?= $cliente['id_cliente']?>"><i class="text-white fas fa-edit"></i></button>
-                            <button class="btn btn-danger"type="button" onClick="document.getElementById('id_cliente').value = <?=$cliente['id_cliente'] ?>" data-toggle="modal" data-target="#modal-confirmacao-excluir"><i class="fa fa-trash"></i></button>
-                        </td>
-
-                      </tr>
-                    <?php endforeach; ?>
-                    <?php else: ?>
-                      <td colspan="7">nenhum cliente cadastrado!</td>
-
-                    <?php endif;?>
-                  </tbody>
-                  </table>
-
-
-                  <div class="modal fade" id="modal-confirmacao-excluir">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                          <form action="/clientes/excluir" method="post">
-                              <div class="modal-header">
-                              <h4 class="modal-title">Deseja excluir este cliente?</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                              <input type="hidden" id="id_cliente" name="id_cliente"></input>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">NÃO</button>
-                              <button type="submit" class="btn btn-primary">SIM</button>
-                            </div>
-                          </form>
-                        </div>
-
-                        </div>
-
-                    </div>
-
+        <?php if(isset($alert)): ?>
+          
+          <?php if($alert == 'success_create'): ?>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  Cliente cadastrado com sucesso!
+                </div>
+              </div>
             </div>
+          <?php elseif($alert == 'success_delete'): ?>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  Cliente excluido com sucesso!
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
 
-<div class="card-footer clearfix">
-<ul class="pagination pagination-sm m-0 float-right">
-<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-<li class="page-item"><a class="page-link" href="#">1</a></li>
-<li class="page-item"><a class="page-link" href="#">2</a></li>
-<li class="page-item"><a class="page-link" href="#">3</a></li>
-<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-</ul>
-</div>
-</div>
-          </div>
+        <?php endif; ?>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <a href="/clientes/novo" class="btn btn-info"><i class="fas fa-user-plus"></i> Novo Cliente</a>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">Cód.:</th>
+                                <th>Nome</th>
+                                <th>Data de Nascimento</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
+                                <th>Limite de Crédito</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <?php if(!empty($clientes)): ?>
+                              <?php foreach($clientes as $cliente): ?>
+                                <tr>
+                                    <td><?= $cliente['id_cliente'] ?></td>
+                                    <td><?= $cliente['nome'] ?></td>
+                                    <td><?= $cliente['data_de_nascimento'] ?></td>
+                                    <td><?= $cliente['telefone'] ?></td>
+                                    <td><?= $cliente['endereco'] ?></td>
+                                    <td><?= $cliente['limite_de_credito'] ?></td>
+                                    <td>
+                                      <a href="/clientes/ver/<?= $cliente['id_cliente'] ?>" class="btn btn-primary"><i class="fas fa-search"></i></a>
+                                      <a href="/clientes/editar/<?= $cliente['id_cliente'] ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                      <button type="button" class="btn btn-danger" onclick="document.getElementById('id_cliente').value = '<?= $cliente['id_cliente'] ?>'" data-toggle="modal" data-target="#modal-confimacao-delte"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                              <?php endforeach; ?>
+                            <?php else: ?>
+                              <tr>
+                                <td colspan="7">Nenhum cliente cadastrado!</td>
+                              </tr>
+                            <?php endif; ?>
+
+                        </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
         </div>
-
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
