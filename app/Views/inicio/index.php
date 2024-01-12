@@ -1,11 +1,17 @@
  <!-- Content Wrapper. Contains page content -->
+<?php
+$session = session();
+$primeiro_nome = $session->get('primeiro_nome');
+
+?>
+
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Bem vindo ao sistema do carai</h1>
+            <h1 class="m-0">Bem vindo ao sistema do carai <?= $primeiro_nome ?></h1>
           </div><!-- /.col -->
           <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

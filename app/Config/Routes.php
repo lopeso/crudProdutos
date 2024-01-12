@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Produtos::index');
+$routes->get('/', 'Login::index');
 ##$routes->add('/home', 'Home::index');
 $routes->setAutoRoute(true);
 //$routes->post('/horaTrabalhada/save_registro', 'Horatrabalhada::save_registro');

@@ -1,3 +1,21 @@
+<?php
+  $session = session();
+  $primeiro_nome = $session->get('primeiro_nome');
+
+  if($primeiro_nome == null):
+    echo "
+    <script>
+      alert('Acessua sua conta para continuar!');
+      window.location.href = '/login';
+    </script>
+  ";
+
+
+  endif;
+
+?>
+
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from

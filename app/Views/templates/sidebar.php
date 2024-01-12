@@ -35,16 +35,25 @@
           <li class="nav-item">
             <a href="/clientes/index" class="nav-link">
               <i class="nav-icon fas fa-address-card"></i>
-              <p>clientes</p>
+              <p>Clientes</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="/funcionarios/index" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
-              <p>funcionarios</p>
+              <p>Funcionarios</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="/login/trocarSenha" class="nav-link">
+              <i class="nav-icon fas fa-user-lock"></i>
+              <p>Trocar Senha</p>
+            </a>
+          </li>
+
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
